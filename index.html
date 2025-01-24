@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web dengan Button</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            gap: 30px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        .button-container button {
+            width: 120px;
+            height: 50px;
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+        .button-container button:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.05);
+        }
+        .button-container button:focus {
+            outline: none;
+        }
+        .button-container i {
+            margin-right: 8px; /* Menambahkan jarak antara ikon dan teks */
+        }
+
+        /* Gaya halaman profil */
+        .profile-container {
+            margin-top: 20px;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0; /* Mulai dengan profil tersembunyi */
+            max-height: 0; /* Mulai dengan tinggi 0 untuk animasi menutup */
+            overflow: hidden;
+            transition: opacity 0.5s ease, max-height 0.5s ease; /* Animasi smooth */
+        }
+        .profile-container.open {
+            opacity: 1;
+            max-height: 500px; /* Sesuaikan dengan ukuran konten profil Anda */
+        }
+
+        /* Gaya gambar profil */
+        #profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-image: url('profile.jpg'); /* Ganti dengan foto profil Anda */
+            background-size: cover;
+            background-position: center;
+            border: 4px solid #ddd;
+            transition: opacity 0.5s ease; /* Animasi untuk foto */
+        }
+        #profile-image.hidden {
+            opacity: 0; /* Sembunyikan gambar saat profil dibuka */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="button-container">
+        <!-- Link Home -->
+        <a href="https://yudakelas.blogspot.com" target="_blank">
+            <button><i class="fas fa-home"></i>Home</button>
+        </a>
+        <!-- Link Profile -->
+        <button onclick="toggleProfile()"><i class="fas fa-user"></i>Profile</button>
+    </div>
+
+    <!-- Profil Section -->
+    <div id="profile" class="profile-container">
+        <h2>Profil Saya</h2>
+        <p id="profile-description">
+            <!-- Tempat untuk menambahkan deskripsi Anda -->
+            Haii, nama saya yuda. Web ini di generate oleh ChatGPT, Saya cuma pemula yang sedikit memahami ilmu komputer. Keinginanku sekarang hanya ingin menjadi pemain Bulu Tangkis, Walau tidak ada usaha, saya tetap memilih itu sampai sekarang. siapa tau saya memiliki potensi yang baik. Okee, Cuma segitu untuk deskripsi diri saya, tidak banyak yang akan saya jelaskan.
+        </p>
+    </div>
+
+    <!-- Foto Profil -->
+    <div id="profile-image"></div>
+
+    <script>
+        function toggleProfile() {
+            var profile = document.getElementById("profile");
+            var profileImage = document.getElementById("profile-image");
+
+            // Cek jika profil sedang terbuka atau tertutup
+            if (profile.classList.contains("open")) {
+                profile.classList.remove("open"); // Menutup dengan animasi
+                profileImage.classList.remove("hidden"); // Menampilkan foto profil
+            } else {
+                profile.classList.add("open"); // Membuka dengan animasi
+                profileImage.classList.add("hidden"); // Menyembunyikan foto profil
+            }
+        }
+    </script>
+
+</body>
+</html>
